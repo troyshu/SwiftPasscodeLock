@@ -10,23 +10,6 @@ import UIKit
 
 open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegate {
     
-    public enum LockState {
-        case enterPasscode
-        case setPasscode
-        case changePasscode
-        case removePasscode
-        
-        func getState() -> PasscodeLockStateType {
-            
-            switch self {
-            case .enterPasscode: return EnterPasscodeState()
-            case .setPasscode: return SetPasscodeState()
-            case .changePasscode: return ChangePasscodeState()
-            case .removePasscode: return EnterPasscodeState(allowCancellation: true)
-            }
-        }
-    }
-    
     @IBOutlet open weak var titleLabel: UILabel?
     @IBOutlet open weak var descriptionLabel: UILabel?
     @IBOutlet open var placeholders: [PasscodeSignPlaceholderView] = [PasscodeSignPlaceholderView]()
