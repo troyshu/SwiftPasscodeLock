@@ -10,7 +10,8 @@ import Foundation
 import PasscodeLock
 
 struct PasscodeLockConfiguration: PasscodeLockConfigurationType {
-    
+    public var touchIdReason: String?
+
     let repository: PasscodeRepositoryType
     let passcodeLength = 4
     var isTouchIDAllowed = true
