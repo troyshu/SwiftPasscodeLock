@@ -31,12 +31,14 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
     
     // MARK: - Initializers
     
-	public init(state: PasscodeLockStateType, configuration: PasscodeLockConfigurationType, animateOnDismiss: Bool = true, nibName: String = "PasscodeLockView", bundle: Bundle? = nil) {
+	public init(state: LockState, configuration: PasscodeLockConfigurationType, animateOnDismiss: Bool = true, nibName: String = "PasscodeLockView", bundle: Bundle? = nil) {
+        
+        let passcodeLockType = state.getState()
         
         self.animateOnDismiss = animateOnDismiss
         
         passcodeConfiguration = configuration
-        passcodeLock = PasscodeLock(state: state, configuration: configuration)
+        passcodeLock = PasscodeLock(state: passcodeLockType, configuration: configuration)
         
         let bundleToUse = bundle ?? bundleForResource(nibName, ofType: "nib")
         
@@ -48,7 +50,7 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
     
     public convenience init(state: LockState, configuration: PasscodeLockConfigurationType, animateOnDismiss: Bool = true) {
         
-        self.init(state: state.getState(), configuration: configuration, animateOnDismiss: animateOnDismiss)
+        self.init(state: state, configuration: configuration, animateOnDismiss: animateOnDismiss)
     }
     
     public required init(coder aDecoder: NSCoder) {

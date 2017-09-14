@@ -14,7 +14,7 @@ public enum LockState {
     case changePasscode
     case removePasscode
     
-    public func getState() -> PasscodeLockStateType {
+    func getState() -> PasscodeLockStateType {
         
         switch self {
         case .enterPasscode: return EnterPasscodeState()
